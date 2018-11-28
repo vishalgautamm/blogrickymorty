@@ -16,11 +16,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Navbar />
+          
 
-          <Header />
-
-          <Container>
+          
             <Switch>
                           
 
@@ -30,8 +28,8 @@ class App extends Component {
               
               <Redirect to="/" />
             </Switch>
-          </Container>
-          <Footer />
+          
+         
         </React.Fragment>
       </BrowserRouter>
     );

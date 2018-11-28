@@ -4,7 +4,7 @@ class Detail extends Component {
     render() {
         return (
             <div>
-                Details from character
+                `Details from character ${this.props.match.params.id}`
             </div>
         );
     }
