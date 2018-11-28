@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import { Link } from 'react-router-dom';
+
+
+// Pages
+import Home from './pages/Home';
+import Characters from './pages/Characters';
+import Detail from './pages/Detail';
+
 
 class App extends Component {
-  
-  
+   
   render() {
     return (
-      <div className="App">
-        Estructura terminada
-      </div>
+      <BrowserRouter>
+        <React.Fragment>
+          <Navbar />
+
+          <Header />
+
+          <Container>
+            <Switch>
+                          
+
+              <Route path="/" exact component={Home} />
+              <Route path="/create" exact component={Characters} />
+              <Route path="/detail/:id" exact component={Detail} />            
+              
+              <Redirect to="/" />
+            </Switch>
+          </Container>
+          <Footer />
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
