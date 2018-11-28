@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import { Link } from 'react-router-dom';
+
+
 
 
 // Pages
@@ -11,7 +12,9 @@ import Detail from './pages/Detail';
 
 
 class App extends Component {
-   
+  
+  
+  
   render() {
     return (
       <BrowserRouter>
@@ -22,11 +25,11 @@ class App extends Component {
             <Switch>
                           
 
-              <Route path="/" exact component={Home} />
-              <Route path="/create" exact component={Characters} />
+              <Route path="/home" exact component={Home} />
+              <Route path="/character" exact component={Characters} />
               <Route path="/detail/:id" exact component={Detail} />            
               
-              <Redirect to="/" />
+              <Redirect to="/home" />
             </Switch>
           
          
