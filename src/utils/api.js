@@ -8,12 +8,10 @@ export function threeRandom() {
   let random1 = parseInt(Math.random() * (TOTAL_CHARACTERS_IDS-min) + min );
   let random2 = parseInt(Math.random() * (TOTAL_CHARACTERS_IDS-min) + min );
   let random3 = parseInt(Math.random() * (TOTAL_CHARACTERS_IDS-min) + min );
-
   return {random1,random2,random3};
 }
 
-export function  getCharacters(...ids) {
-  
+export function  getCharacters(...ids) {  
   return axios({
     method: 'get',
     url: `${PATH_BASE}${PATH_CHARACTERS}/${ids}`,    
@@ -26,10 +24,8 @@ export function  getCharacters(...ids) {
 
 export async function getHomeImages(){
  let ids = threeRandom()
- console.log(ids)
- 
- let response =await getCharacters([ids.random1,ids.random2,ids.random3])
- 
+ console.log(ids) 
+ let response =await getCharacters([ids.random1,ids.random2,ids.random3]) 
  let images = response.data.map((element)=>element.image)
  return images 
 }
@@ -41,18 +37,11 @@ export async function getCharactersByPage(pagenumber){
   let ids=[]
   let firstid= 1 +((pagenumber-1)*21)
   let lastid = 21 +((pagenumber-1)*21)
-  
-
   for (let i=firstid; i<=lastid ;i++){
     ids.push(i)
-  }
- 
-  
-  let response =await getCharacters(ids)
- 
-  
-  let data = response.data.map((elm)=>{return ({id:elm.id,url:elm.image})})
- 
+  }  
+  let response =await getCharacters(ids)  
+  let data = response.data.map((elm)=>{return ({id:elm.id,url:elm.image})}) 
   return data
  }
 

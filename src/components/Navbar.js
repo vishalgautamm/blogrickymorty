@@ -6,11 +6,9 @@ class Navbar extends Component {
   render() {
     return (
       
-        <nav className="" >
-                    
+        <nav className="" >                    
             <li className=""><Link to="/home">Home</Link></li>
-            <li className=""><Link to="/characters">Characters</Link></li>             
-          
+            <li className=""><Link to="/characters">Characters</Link></li>
         </nav>
     
     );
