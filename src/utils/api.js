@@ -33,3 +33,27 @@ export async function getHomeImages(){
  let images = response.data.map((element)=>element.image)
  return images 
 }
+
+
+// el grid que nos muestran es de 21 imagenes, por eso se paginaran por cada 21
+
+export async function getCharactersByPage(pagenumber){
+  let ids=[]
+  let firstid= 1 +((pagenumber-1)*21)
+  let lastid = 21 +((pagenumber-1)*21)
+  
+
+  for (let i=firstid; i<=lastid ;i++){
+    ids.push(i)
+  }
+ 
+  
+  let response =await getCharacters(ids)
+ 
+  
+  let data = response.data.map((elm)=>{return ({id:elm.id,url:elm.image})})
+ 
+  return data
+ }
+
+
