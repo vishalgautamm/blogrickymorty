@@ -8,13 +8,15 @@ class Home extends Component {
     constructor(props){
         super(props)
         this.state={
-            images:[]
+            images:[],
+            loading:false
         }
     }   
      
     async componentDidMount() {
+        this.setState({loading:true})
         let response = await getHomeImages()        
-        this.setState({images:response})
+        this.setState({images:response,loading:false})
     }
 
     printImages(){
@@ -23,9 +25,18 @@ class Home extends Component {
     }
     
     render() {
+        const loading = this.state.loading;
+        let result 
+
+        if (loading==true){
+            result = <div className="lds-facebook"><div></div><div></div><div></div></div>
+        }else{
+            result = this.printImages()
+        }
+            
         return (
             <Fragment className="row container" >
-                {this.printImages()}
+                {result}
 
                 <div className="container">
                     <Link to="/characters">

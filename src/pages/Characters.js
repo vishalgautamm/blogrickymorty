@@ -8,7 +8,8 @@ class Characters extends Component {
         super(props)
         this.state={
             data:[],
-            page:1
+            page:1,
+            loading:false
         }
     }
         
@@ -17,8 +18,9 @@ class Characters extends Component {
       }
 
     async getCharactersImages(){
-        let response = await getCharactersByPage(this.state.page)        
-        this.setState({data:response})
+        this.setState({loading:true})
+        let response = await getCharactersByPage(this.state.page)               
+        this.setState({data:response,loading:false})
       }
 
     nextPage=()=>{
@@ -34,9 +36,17 @@ class Characters extends Component {
     }    
    
     render() {
+        const loading = this.state.loading;
+        let result 
+
+        if (loading==true){
+            result = <div className="lds-facebook"><div></div><div></div><div></div></div>
+        }else{
+            result = <CharacterPage data={this.state.data}></CharacterPage>  
+        }
         return (
             <Fragment>
-                <CharacterPage data={this.state.data}></CharacterPage>            
+                 {result}         
                 <div className="row col-md-12 mt-2 btn btn-default">
                     <button className="mr-2 btn btn-default" onClick={this.lastPage}>Last</button>
                     <button className="btn btn-default" onClick={this.nextPage}>Next</button>
