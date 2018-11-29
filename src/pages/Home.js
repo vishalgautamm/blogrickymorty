@@ -19,14 +19,19 @@ class Home extends Component {
 
     printImages(){
         let images =this.state.images        
-        return images.map((url,index)=><img key={index} src={url}></img>)
+        return images.map((url,index)=><img key={index} src={url} className="col-md-4"></img>)
     }
     
     render() {
         return (
-            <Fragment >
+            <Fragment className="row container" >
                 {this.printImages()}
-                <Link to="/characters"><button>See more</button></Link>
+
+                <div className="container">
+                    <Link to="/characters">
+                            <button className="btn btn-default mt-2  ">See more</button>
+                    </Link>
+                </div>
             </Fragment>
         );
     }

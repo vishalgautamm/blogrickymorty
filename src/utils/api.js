@@ -31,12 +31,12 @@ export async function getHomeImages(){
 }
 
 
-// el grid que nos muestran es de 21 imagenes, por eso se paginaran por cada 21
+// tendremos un grid de 18 imagenes 6 * 3 
 
 export async function getCharactersByPage(pagenumber){
   let ids=[]
-  let firstid= 1 +((pagenumber-1)*21)
-  let lastid = 21 +((pagenumber-1)*21)
+  let firstid= 1 +((pagenumber-1)*18)
+  let lastid = 18 +((pagenumber-1)*18)
   for (let i=firstid; i<=lastid ;i++){
     ids.push(i)
   }  

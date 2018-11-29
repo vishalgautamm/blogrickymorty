@@ -10,14 +10,15 @@ import Home from './pages/Home';
 import Characters from './pages/Characters';
 import Detail from './pages/Detail';
 
+
 class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter>        
         <React.Fragment>
            <Navbar/>
-           <Container>
+           <Container >
               <Switch>
                 <Route path="/home" exact component={Home} />
                 <Route path="/characters" exact component={Characters} />
@@ -25,7 +26,7 @@ class App extends Component {
                 <Redirect to="/home" />
               </Switch>
             </Container>
-        </React.Fragment>
+        </React.Fragment>        
       </BrowserRouter>
     );
   }

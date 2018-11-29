@@ -7,14 +7,14 @@ class CharactersPage extends Component {
         let images =this.props.data       
         return images.map((elm,index)=>
         <Link to={`detail/${elm.id}`}>
-            <img key={index} src={elm.url} >
+            <img className="col-md-2 mt-4" key={index} src={elm.url} >
             </img>
         </Link>)
     } 
     
     render() {
         return (
-            <Fragment >
+            <Fragment className="row">
                 {this.printImages()}
             </Fragment>
         );

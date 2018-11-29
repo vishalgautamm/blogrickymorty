@@ -22,7 +22,7 @@ class Characters extends Component {
       }
 
     nextPage=()=>{
-        if(this.state.page==19){return null} //limite para numero maximo de paginas
+        if(this.state.page==22){return null} //limite para numero maximo de paginas
         let newpage = this.state.page +1        
         this.setState({page:newpage},()=>{this.getCharactersImages()})
         
@@ -36,9 +36,11 @@ class Characters extends Component {
     render() {
         return (
             <Fragment>
-            <CharacterPage data={this.state.data}></CharacterPage>            
-            <button onClick={this.lastPage}>Last</button>
-            <button onClick={this.nextPage}>Next</button>
+                <CharacterPage data={this.state.data}></CharacterPage>            
+                <div className="row col-md-12 mt-2 btn btn-default">
+                    <button className="mr-2 btn btn-default" onClick={this.lastPage}>Last</button>
+                    <button className="btn btn-default" onClick={this.nextPage}>Next</button>
+                </div>
             </Fragment>
         );
     }
