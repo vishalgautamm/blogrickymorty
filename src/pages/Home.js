@@ -35,14 +35,15 @@ class Home extends Component {
         }
             
         return (
-            <Fragment className="row container" >
-                {result}
+            <Fragment>
+                
+                <div className="row mt-4">{result}</div>
 
-                <div className="container">
-                    <Link to="/characters">
-                            <button className="btn btn-default mt-2  ">See more</button>
-                    </Link>
-                </div>
+                
+                <Link to="/characters" className="row align-items-end" >
+                        <button className="m-2 col-md-2 col-sm-8 btn btn-dark">See more</button>
+                </Link>
+              
             </Fragment>
         );
     }

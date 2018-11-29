@@ -42,15 +42,15 @@ class Characters extends Component {
         if (loading==true){
             result = <div className="lds-facebook"><div></div><div></div><div></div></div>
         }else{
-            result = <CharacterPage data={this.state.data}></CharacterPage>  
+            result =<div><CharacterPage data={this.state.data}></CharacterPage></div>  
         }
         return (
             <Fragment>
-                 {result}         
-                <div className="row col-md-12 mt-2 btn btn-default">
-                    <button className="mr-2 btn btn-default" onClick={this.lastPage}>Last</button>
-                    <button className="btn btn-default" onClick={this.nextPage}>Next</button>
-                </div>
+                
+                <div>{result}  </div>       
+                <button className="m-2 col-md-2 col-sm-4 btn btn-dark" onClick={this.lastPage}>Last</button>
+                <button className="m-2 col-md-2 col-sm-4 btn btn-dark" onClick={this.nextPage}>Next</button>                
+            
             </Fragment>
         );
     }

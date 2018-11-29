@@ -9,11 +9,8 @@ class Navbar extends Component {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark " id="mainNav">
           <div className="container">
             
-            <button className="navbar-toggler navbar-toggler-right" type="button">
-              Menu
-              <i className="fa fa-bars" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarResponsive">
+            
+            <div className="" >
               <ul className="navbar-nav mr-auto">
 	              <li className="nav-item mr-1"><Link to="/home">Home  </Link></li>
 	              <li className="nav-item"><Link to="/characters">Characters</Link></li>
