@@ -1,59 +1,63 @@
-import React, { Component,Fragment } from 'react';
-import {getCharactersByPage} from './../utils/api'
-import CharacterPage from './../components/CharactersPage';
+import React, { Component, Fragment } from 'react'
+import { getCharactersByPage } from './../utils/api'
+import CharactersPage from './../components/CharactersPage'
+import Button from '../components/Button'
+import Loading from '../components/Loading'
 
 class Characters extends Component {
+  state = {
+    data: [],
+    page: 1,
+    loading: false
+  }
 
-    constructor(props){
-        super(props)
-        this.state={
-            data:[],
-            page:1,
-            loading:false
-        }
-    }
-        
-    componentDidMount() {
-        this.getCharactersImages()
-      }
+  componentDidMount () {
+    this.getCharactersImages()
+  }
 
-    async getCharactersImages(){
-        this.setState({loading:true})
-        let response = await getCharactersByPage(this.state.page)               
-        this.setState({data:response,loading:false})
-      }
+  async getCharactersImages () {
+    this.setState({ loading: true })
+    let response = await getCharactersByPage(this.state.page)
+    this.setState({ data: response, loading: false })
+  }
 
-    nextPage=()=>{
-        if(this.state.page==22){return null} //limite para numero maximo de paginas
-        let newpage = this.state.page +1        
-        this.setState({page:newpage},()=>{this.getCharactersImages()})
-        
-    }
-    lastPage=()=>{
-        if(this.state.page==1){return null}//limite para numero minimo de paginas
-        let newpage = this.state.page -1
-        this.setState({page:newpage},()=>{this.getCharactersImages()})
-    }    
-   
-    render() {
-        const loading = this.state.loading;
-        let result 
+  nextPage = () => {
+    if (this.state.page === 22) {
+      // -- always use === operator over == operator for comparing things
 
-        if (loading==true){
-            result = <div className="lds-facebook"><div></div><div></div><div></div></div>
-        }else{
-            result =<div><CharacterPage data={this.state.data}></CharacterPage></div>  
-        }
-        return (
-            <Fragment>
-                
-                <div>{result}  </div>       
-                <button className="m-2 col-md-2 col-sm-4 btn btn-dark" onClick={this.lastPage}>Last</button>
-                <button className="m-2 col-md-2 col-sm-4 btn btn-dark" onClick={this.nextPage}>Next</button>                
-            
-            </Fragment>
-        );
-    }
+      return null
+    } // limite para numero maximo de paginas
+    let newpage = this.state.page + 1
+    this.setState({ page: newpage }, () => {
+      this.getCharactersImages()
+    })
+  }
+  lastPage = () => {
+    if (this.state.page === 1) {
+      return null
+    } // limite para numero minimo de paginas
+    let newpage = this.state.page - 1
+    this.setState({ page: newpage }, () => {
+      this.getCharactersImages()
+    })
+  }
+
+  render () {
+    const { loading, data } = this.state
+    return (
+      <Fragment>
+        <Button onClick={this.lastPage} secondary>
+          Last
+        </Button>
+        <Button onClick={this.nextPage} primary>
+          Next
+        </Button>
+        <div style={{ minHeight: '400px' }}>
+          {loading ? <Loading /> : <CharactersPage data={data} />}
+        </div>
+      </Fragment>
+    )
+  }
 }
 
-export default Characters;
+export default Characters

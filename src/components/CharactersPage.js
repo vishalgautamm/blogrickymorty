@@ -1,24 +1,15 @@
-import React, { Component,Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-class CharactersPage extends Component {
+// convert class components to functional components
+const CharactersPage = props => {
+  const images = props.data
 
-    printImages(){
-        let images =this.props.data       
-        return images.map((elm,index)=>
-        <Link to={`detail/${elm.id}`}>
-            <img className="col-md-2 col-sm-6 mt-4" key={index} src={elm.url} >
-            </img>
-        </Link>)
-    } 
-    
-    render() {
-        return (
-            <Fragment className="row">
-                {this.printImages()}
-            </Fragment>
-        );
-    }
+  return images.map((elm, index) => (
+    <Link to={`detail/${elm.id}`}>
+      <img className='col-md-4 col-sm-6 mt-4' key={index} src={elm.url} />
+    </Link>
+  ))
 }
 
-export default CharactersPage;
+export default CharactersPage
